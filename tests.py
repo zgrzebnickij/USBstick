@@ -4,7 +4,7 @@ from main import calculate, brute
 
 class TestExampleData(unittest.TestCase):
 
-    def test_dynamic_example_data(self):
+    def test_calculate_example1_data(self):
         usb_size = 1
         memes = [
             ('rollsafe.jpg', 205, 6),
@@ -13,10 +13,11 @@ class TestExampleData(unittest.TestCase):
         ]
 
         results = calculate(usb_size, memes)
-        print(results)
-        assert((22, {'sad_pepe_compilation.gif', 'yodeling.avi'}) == results)
+        self.assertEqual((22, {'sad_pepe_compilation.gif', 'yodeling.avi'}),
+                         results,
+                         "Calculate function do not pass example 1")
 
-    def test_brute_force_example_data(self):
+    def test_brute_force_example1_data(self):
         usb_size = 1
         memes = [
             ('rollsafe.jpg', 205, 6),
@@ -24,24 +25,29 @@ class TestExampleData(unittest.TestCase):
             ('yodeling.avi', 605, 12)
         ]
         result = brute(usb_size, memes)
-        print(result)
-        assert(result == (22, {'sad_pepe_compilation.gif', 'yodeling.avi'}))
+        self.assertEqual(result,
+                         (22, {'sad_pepe_compilation.gif', 'yodeling.avi'}),
+                         "Brute force function do not pass example 1")
 
-    def test_brute_force_equale_to_dynamic(self):
+    def test_brute_force_equal_to_calculate_example2_data(self):
         usb_size = 1
         memes = [
             ('rollsafe.jpg', 205, 6),
             ('sad_pepe_compilation.gif', 410, 10),
             ('yodeling.avi', 605, 12),
             ('pepe.jpg', 105, 3),
-            ('cat.gif', 302, 20),
-            ('kid.avi', 800, 11),
+            ('grumpy_cat.gif', 302, 20),
+            ('be_like_bil.avi', 800, 11),
             ('guitar.jpg', 90, 2),
             ('happy_pepe_compilation.gif', 12, 10),
-            ('kill.avi', 890, 13)
+            ('old_spice_guy.avi', 890, 13)
         ]
-        br = brute(usb_size, memes)
-        cal = calculate(usb_size, memes)
-        print(br, cal)
-        assert(br == cal)
+        brute_force_result = brute(usb_size, memes)
+        calculate_result = calculate(usb_size, memes)
+        self.assertEqual(brute_force_result,
+                         calculate_result,
+                         "Dynamic and brute force solutions have different results")
 
+
+if __name__ == '__main__':
+    unittest.main()

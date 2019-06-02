@@ -4,6 +4,12 @@ from pprint import pprint
 
 
 def greedy(usb_size, memes):
+    """
+    Calculate maximal price for USB stick using greedy solution
+    :param usb_size: capacity of USB stick in GiB
+    :param memes: list of memes data in form (name, size, price), size in MiB, price in caps
+    :return: maximal price for USB stick and set of memes names
+    """
     usb_size_Mib = 1024*usb_size
     usb_stick_memory_used = 0
     usb_price = 0
@@ -17,6 +23,12 @@ def greedy(usb_size, memes):
 
 
 def brute(usb_size, memes):
+    """
+    Calculate maximal price for USB stick using brute force solution
+    :param usb_size: capacity of USB stick in GiB
+    :param memes: list of memes data in form (name, size, price), size in MiB, price in caps
+    :return: maximal price for USB stick and set of memes names
+    """
     usb_size_Mib = 1024*usb_size
     max_price = 0
     memes_set = set()
@@ -32,7 +44,7 @@ def brute(usb_size, memes):
 
 def calculate(usb_size, memes):
     """
-    Calculate maximal price for USB stick
+    Calculate maximal price for USB stick using dynamic solution
     :param usb_size: capacity of USB stick in GiB
     :param memes: list of memes data in form (name, size, price), size in MiB, price in caps
     :return: maximal price for USB stick and set of memes names
@@ -61,6 +73,12 @@ def calculate(usb_size, memes):
 
 
 def calculate_recursion(usb_size, memes):
+    """
+    Calculate maximal price for USB stick using recursion
+    :param usb_size: capacity of USB stick in GiB
+    :param memes: list of memes data in form (name, size, price), size in MiB, price in caps
+    :return: maximal price for USB stick and set of memes names
+    """
     usb_size_Mib = 1024 * usb_size
     _, size, prices = zip(*memes)
 
@@ -86,10 +104,10 @@ if __name__ == '__main__':
         ('sad_pepe_compilation.gif', 410, 10),
         ('yodeling.avi', 605, 12),
         ('pepe.jpg', 105, 3),
-        ('cat.gif', 302, 20),
-        ('kid.avi', 800, 11),
+        ('grumpy_cat.gif', 302, 20),
+        ('be_like_bil.avi', 800, 11),
         ('guitar.jpg', 90, 2),
         ('happy_pepe_compilation.gif', 12, 10),
-        ('kill.avi', 890, 13)
+        ('old_spice_guy.avi', 890, 13)
     ]
     pprint(calculate(usb_size, memes))
