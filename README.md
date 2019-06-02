@@ -2,8 +2,8 @@
 
 Python3.7
 
-In main there are few functions that calculates the best set of memes, so the UBS stick can be sold for the highest price.
-As arguments function takes USB stick capacity and list of memes data in form (str(name), int(size), int(price))
+In _main.py_ there are few functions that calculates the best set of memes, such that the UBS stick can be sold for the highest price.
+As arguments function takes USB stick capacity and list of memes in form (str(name), int(size), int(price))
 The function return a tuple with total price of memes on USB stick and set of their names
 
 ## Description
@@ -68,7 +68,7 @@ output:
 
 Run tests.py
 
-## Requirements
+## Task requirements
 
 * Each meme is used only once
 * Function take exactly 2 arguments _usb_size_ and _memes_
