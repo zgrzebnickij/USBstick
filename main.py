@@ -62,14 +62,17 @@ def calculate(usb_size, memes):
                 with_item = memes[meme_index-1][2] + previous_values[meme_index - 1][size - memes[meme_index-1][1]]
                 if with_item > without_item:
                     previous_values[meme_index][size] = with_item
-                    previous_names[meme_index][size] = previous_names[meme_index - 1][size - memes[meme_index-1][1]].union([meme_index])
+                    names_set = previous_names[meme_index - 1][size - memes[meme_index-1][1]].copy()
+                    previous_names[meme_index][size] = names_set.union([meme_index])
                 else:
                     previous_values[meme_index][size] = without_item
                     previous_names[meme_index][size] = previous_names[meme_index - 1][size]
             else:
                 previous_values[meme_index][size] = previous_values[meme_index - 1][size]
                 previous_names[meme_index][size] = previous_names[meme_index - 1][size]
-    return previous_values[memes_size][usb_size_Mib], {memes[index - 1][0] for index in previous_names[memes_size][usb_size_Mib]}
+    best_price = previous_values[memes_size][usb_size_Mib]
+    memes_names_set = {memes[index-1][0] for index in previous_names[memes_size][usb_size_Mib]}
+    return best_price, memes_names_set
 
 
 def calculate_recursion(usb_size, memes):
