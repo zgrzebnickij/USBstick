@@ -29,8 +29,9 @@ class TestExampleData(unittest.TestCase):
                          (22, {'sad_pepe_compilation.gif', 'yodeling.avi'}),
                          "Brute force function do not pass example 1")
 
-    def test_brute_force_equal_to_calculate_example2_data(self):
+    def test_brute_force_equal_to_calculate_example2_data_with_only_one_answer(self):
         usb_size = 1
+        # for this list of memes there is only one solution
         memes = [
             ('rollsafe.jpg', 205, 6),
             ('sad_pepe_compilation.gif', 410, 10),
@@ -47,6 +48,26 @@ class TestExampleData(unittest.TestCase):
         self.assertEqual(brute_force_result,
                          calculate_result,
                          "Dynamic and brute force solutions have different results")
+
+    def test_calculate_for_empty_memes_list(self):
+        usb_size = 1
+        memes = []
+        results = calculate(usb_size, memes)
+        self.assertEqual((0, frozenset()),
+                         results,
+                         "Calculate function do not return empty set")
+
+    def test_calculate_for_zero_capacity(self):
+        usb_size = 0
+        memes = [
+            ('rollsafe.jpg', 205, 6),
+            ('sad_pepe_compilation.gif', 410, 10),
+            ('yodeling.avi', 605, 12)
+        ]
+        results = calculate(usb_size, memes)
+        self.assertEqual((0, frozenset()),
+                         results,
+                         "Calculate function do not return empty set")
 
 
 if __name__ == '__main__':

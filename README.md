@@ -14,7 +14,7 @@ It was used to check other algorithms and only for that because it complexity is
 * _greedy_ - Making this solution I tried to find one parameter which can describe all memes.
 This solution is quick but inaccurate 
 * _calculate_ - In this solution each meme is checked starting from capacity equals 1 MiB.
-Two possibilities are checked and better id chosen. Firs one include item in USB stick and add its value to the value from previous meme, where capacity was smaller by current meme size.
+Two possibilities are checked and better id chosen. Firs one include meme in USB stick and add its value to the value from previous meme, where capacity was smaller by current meme size.
 Second one take its value from the same capacity of previous meme. This solution is efficient because it stores prices of all capacities 
 * _calculate_recursion_ - it's similar to calculate function but use recursion and program remembers function calls with the same arguments.
 
@@ -73,8 +73,9 @@ Run tests.py
 * Each meme is used only once
 * Function take exactly 2 arguments _usb_size_ and _memes_
 * Function _calculate_ is in file _main.py_
+* In case of many solutions function returns that one with less amount of memes 
 
-## Authors
+## Author
 
 * **Jakub Zgrzebnicki** - [zgrzebnickij](https://github.com/zgrzebnickij)
 
