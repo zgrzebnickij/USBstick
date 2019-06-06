@@ -55,9 +55,7 @@ def calculate(usb_size, memes):
     previous_names = [[frozenset() for _ in range(usb_size_Mib + 1)] for _ in range(memes_size + 1)]
     # starting from 1 because first row is filled with zeros(situation with empty usb stick)
     for meme_index in range(1, memes_size + 1):
-        # staring from 1 because 0 capacity can't fit an item
         for capacity in range(1, usb_size_Mib + 1):
-            # when meme could fit - check what gives better price
             if memes[meme_index-1][1] <= capacity:
                 without_item = previous_values[meme_index - 1][capacity]
                 with_item = memes[meme_index-1][2] + previous_values[meme_index - 1][capacity - memes[meme_index-1][1]]
@@ -68,7 +66,6 @@ def calculate(usb_size, memes):
                 else:
                     previous_values[meme_index][capacity] = without_item
                     previous_names[meme_index][capacity] = previous_names[meme_index - 1][capacity]
-            # when meme couldn't fit - take values from previous meme with the same capacity
             else:
                 previous_values[meme_index][capacity] = previous_values[meme_index - 1][capacity]
                 previous_names[meme_index][capacity] = previous_names[meme_index - 1][capacity]
