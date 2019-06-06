@@ -61,7 +61,7 @@ def calculate(usb_size, memes):
                 with_item = memes[meme_index-1][2] + previous_values[meme_index - 1][capacity - memes[meme_index-1][1]]
                 if with_item > without_item:
                     previous_values[meme_index][capacity] = with_item
-                    names_set = previous_names[meme_index - 1][capacity - memes[meme_index-1][1]].copy()
+                    names_set = previous_names[meme_index - 1][capacity - memes[meme_index-1][1]]
                     previous_names[meme_index][capacity] = names_set.union([meme_index])
                 else:
                     previous_values[meme_index][capacity] = without_item

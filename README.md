@@ -73,7 +73,6 @@ Run tests.py
 * Each meme is used only once
 * Function take exactly 2 arguments _usb_size_ and _memes_
 * Function _calculate_ is in file _main.py_
-* In case of many solutions function returns that one with less amount of memes 
 
 ## Author
 
