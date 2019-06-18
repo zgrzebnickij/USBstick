@@ -1,5 +1,6 @@
 import unittest
 from main import calculate, brute
+from random import randint
 
 
 class TestExampleData(unittest.TestCase):
@@ -44,7 +45,6 @@ class TestExampleData(unittest.TestCase):
             ('old_spice_guy.avi', 890, 13)
         ]
         calculate_result = calculate(usb_size, memes)
-        print(calculate_result)
         self.assertEqual(calculate_result,
                          (48, {'guitar.jpg', 'grumpy_cat.gif', 'sad_pepe_compilation.gif',
                                'happy_pepe_compilation.gif', 'rollsafe.jpg'}),
@@ -69,6 +69,26 @@ class TestExampleData(unittest.TestCase):
         self.assertEqual((0, frozenset()),
                          results,
                          "Calculate function do not return empty set")
+
+    def test_brute_force_same_as_calculate(self):
+        usb_size = 1
+        memes = [
+            ('rollsafe.jpg', randint(1, 800), randint(1, 20)),
+            ('sad_pepe_compilation.gif', randint(1, 800), randint(1, 20)),
+            ('yodeling.avi', randint(1, 800), randint(1, 20)),
+            ('pepe.jpg', randint(1, 800), randint(1, 20)),
+            ('grumpy_cat.gif', randint(1, 800), randint(1, 20)),
+            ('be_like_bil.avi', randint(1, 800), randint(1, 20)),
+            ('guitar.jpg', randint(1, 800), randint(1, 20)),
+            ('happy_pepe_compilation.gif', randint(1, 800), randint(1, 20)),
+            ('old_spice_guy.avi', randint(1, 800), randint(1, 20)),
+        ]
+        result_brute = brute(usb_size, memes)
+        result_cal = calculate(usb_size, memes)
+        print(result_cal)
+        self.assertEqual(result_brute,
+                         result_cal,
+                         "Brute force and calc diff results")
 
 
 if __name__ == '__main__':
